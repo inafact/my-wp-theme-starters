@@ -1,5 +1,3 @@
-/* eslint no-console:0 */
-
 import path from 'path';
 
 import gulp from 'gulp';
@@ -13,7 +11,6 @@ import browserSync from 'browser-sync';
 import del from 'del';
 
 import includeDev from './templates/devmode-php-include';
-import style from './templates/wordpress-style-css';
 import bSSnippet from './templates/browser-sync-snippet';
 
 import Config from './config';
@@ -34,7 +31,6 @@ const config = {
 
 export default {
   clean(done) {
-		gutil.log(config.resources.dest);
     del(config.resources.dest, { force: true })
       .then(() => { done(); });
   },
@@ -44,13 +40,11 @@ export default {
       .pipe(plugins.plumber())
       .pipe(plugins.add({
         '.gitignore': '*',
-        'style.css': style,
       }))
       .pipe(gulp.dest(config.themeDir));
   },
 
   dev() {
-    plugins.util.log('start theme.dev task');
     const filterPHP = plugins.filter('**/*.php', { restore: true });
     const filterFunc = plugins.filter('functions.php', { restore: true });
     const bs = browserSync.get('bs-server');
@@ -64,7 +58,8 @@ export default {
           let _filename = filename;
           _filename = filename.replace(config.originRoot, config.proxyRoot);
           gutil.log(gutil.colors.blue(
-						'replaced',
+						filename,
+						' -> ',
 						_filename
 					));
 
@@ -74,7 +69,6 @@ export default {
       .pipe(filterPHP.restore)
       .pipe(plugins.add({
         '.gitignore': '*',
-        'style.css': style,
       }))
       .pipe(filterFunc)
       .pipe(plugins.insert.append(bSSnippet))

@@ -1,9 +1,8 @@
-module.exports = function (filename, definitions) {
+export default (filename, definitions) => {
+	const preservedDefs = (definitions && definitions.length)
+				? ' * ' + definitions.join('\n * ') + '\n *'
+				: ' *';
 
-	var preservedDefs = (definitions && definitions.length)
-		? ' * ' + definitions.join('\n * ') + '\n *'
-		: ' *';
-	
 	return [
 		'<?php',
 		'/**',

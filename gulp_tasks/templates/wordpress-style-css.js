@@ -1,4 +1,3 @@
-// var project = require('../../../project.config');
 const project = {};
 
 var possibleOptions = {
