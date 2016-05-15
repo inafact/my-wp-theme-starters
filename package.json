@@ -1,7 +1,7 @@
 {
   "name": "wp2bs-theme-starter",
-  "version": "0.0.1",
-  "description": "-",
+  "version": "0.1.0",
+  "description": "(wp2 = wordpress + webpack) + (bs = bootstrap-sass) theme starte",
   "scripts": {
     "main": "gulp"
   },
@@ -13,9 +13,9 @@
     "wordpress"
   ],
   "dependencies": {
-    "bootstrap-sass": "^3.3.5",
+    "bootstrap-sass": "^3.3.6",
     "jquery": "^2.2.0",
-    "lodash": "^3.10.1"
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "autoprefixer": "^6.1.0",

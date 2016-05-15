@@ -4,25 +4,29 @@ import gulp from 'gulp';
 import gutil from 'gulp-util';
 import browserSync from 'browser-sync';
 
-import theme from './theme';
-import webpack from './webpack';
+import config from './gulp_tasks/config';
+import theme from './gulp_tasks/theme';
+import webpack from './gulp_tasks/webpack';
 
 gulp.task('default', () => {
   const bs = browserSync.create('bs-server');
-
   gutil.log(gutil.colors.green('default'));
   bs.init({
-    proxy: 'yushinada.dev',
+    proxy: config.proxy.hostname,
   }, () => {
-    theme.watch();
-    webpack.dev();
+		theme.watch();
+		webpack.dev();
   });
 });
 
 gulp.task('clean', () => {
   gutil.log(gutil.colors.green('clean'));
   theme.clean();
-  webpack.clean();
+});
+
+gulp.task('build', ['clean'], () => {
+	theme.build();
+  webpack.build();
 });
 
 // themes

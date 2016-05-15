@@ -5,26 +5,3 @@ body {
   color: #fff;
   background-color: $gray;
 }
-
-.main {
-  /* &:before { */
-  /*   content: ''; */
-  /*   display: block; */
-  /*   background-image: url("../images/newflag_news\@2x.png"); */
-  /*   width: 98px; */
-  /*   height: 98px; */
-  /*   background-repeat: no-repeat; */
-  /* } */
-}
-
-h2 {
-  color: #ff0;
-  &:before {
-    content: '';
-    display: block;
-    background-image: url("../images/newflag_news\@2x.png");
-    width: 98px;
-    height: 98px;
-    background-repeat: no-repeat;
-  }
-}
