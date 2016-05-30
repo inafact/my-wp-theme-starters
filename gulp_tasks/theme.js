@@ -12,8 +12,10 @@ import del from 'del';
 
 import includeDev from './templates/devmode-php-include';
 import bSSnippet from './templates/browser-sync-snippet';
+import style from './templates/wordpress-style-css';
 
 import Config from './config';
+
 const config = {
 	themeDir: path.resolve('../', Config.theme.name),
 	resources: {
@@ -40,6 +42,7 @@ export default {
       .pipe(plugins.plumber())
       .pipe(plugins.add({
         '.gitignore': '*',
+				'style.css': style.production,
       }))
       .pipe(gulp.dest(config.themeDir));
   },
@@ -69,6 +72,7 @@ export default {
       .pipe(filterPHP.restore)
       .pipe(plugins.add({
         '.gitignore': '*',
+				'style.css': style.develop,
       }))
       .pipe(filterFunc)
       .pipe(plugins.insert.append(bSSnippet))

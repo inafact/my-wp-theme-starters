@@ -1,46 +1,36 @@
-const project = {};
+import _ from 'lodash';
+import Config from '../config';
 
-var possibleOptions = {
-	name: 'Text Domain',
-	prettyName: 'Theme Name',
-	themeURI: 'Theme URI',
-	description: 'Description',
-	parentTheme: 'Template',
-	version: 'Version',
-	author: 'Author',
-	authorURI: 'Author URI',
-	license: 'License',
-	licenseURI: 'License URI',
-	tags: 'Tags'
+const tconf = Config.theme;
+
+export default {
+	develop: `
+/*
+Theme Name: ${_.has(tconf, 'name') ? tconf.name : ''}-dev
+Theme URI:
+Author:
+Author URI:
+Description:
+Version: develop
+License:
+License URI:
+Tags:
+Text Domain:
+*/`,
+	production: `
+/*
+Theme Name: ${_.has(tconf, 'name') ? tconf.name : ''}
+Theme URI: ${_.has(tconf, 'uri') ? tconf.uri : ''}
+Author: ${_.has(tconf, 'author') ? tconf.author : ''}
+Author URI: ${_.has(tconf, 'authorURI') ? tconf.authorURI : ''}
+Description: ${_.has(tconf, 'description') ? tconf.description : ''}
+Version: ${_.has(tconf, 'version') ? tconf.version : ''}
+License: ${_.has(tconf, 'license') ? tconf.license : ''}
+License URI: ${_.has(tconf, 'licenseURI') ? tconf.licenseURI : ''}
+Tags: ${_.has(tconf, 'tags') ? tconf.tags : ''}
+Text Domain: ${_.has(tconf, 'textDomain') ? tconf.textDomain : ''}
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/`,
 };
-var options = [];
-var value;
-
-for (var optionKey in possibleOptions) {
-	if (possibleOptions.hasOwnProperty(optionKey) && project.hasOwnProperty(optionKey)) {
-		value = project[optionKey];
-		if (Array.isArray(value)) {
-			value = value.join(', ');
-		}
-
-		options.push([' * ', possibleOptions[optionKey], ': ', value].join(''));
-	}
-}
-
-
-module.exports = [
-	'/**',
-	options.join('\n'),
-	' *',
-	' * Theme Styles are in the assets/css folder,',
-	' * this file is only used for theme initialization',
-	' *',
-	' * This file is generated automagically by the',
-	' * build system. To edit theme styles use the files',
-	' * in the "dev theme", in the assets/scss folder',
-	' *',
-	' * See more at:',
-	' * https://github.com/MozaikAgency/wp-theme-starter',
-	' *',
-	' */'
-].join('\n');

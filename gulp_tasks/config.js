@@ -1,5 +1,22 @@
 export default {
 	/*
+	 * wordpress theme infomations & resources
+	 */
+	theme: {
+		name: 'theme name',
+		// uri: ,
+		author: 'author name',
+		// authorURI: ,
+		// description: ,
+		version: '0.0',
+		// license:' GNU General Public License v2 or later',
+		// licenseURI: 'http://www.gnu.org/licenses/gpl-2.0.html',
+		// tags: ,
+		// textDomain: ,
+		resources: '*.{php,twig,png,gif,jpg,css,js,svg,ttf,eot,woff,woff2}',
+	},
+
+	/*
 	 * working with webpack resources
 	 */
 	assets: {
@@ -9,15 +26,7 @@ export default {
 		},
 		src: 'assets/**',
 		dest: 'assets',
-		resources: '*.{js,jsx,scss,css,json,png,jpg}',
-	},
-
-	/*
-	 * other wordpress theme resources
-	 */
-	theme: {
-		name: 'test-theme',
-		resources: '*.{php,twig,png,jpg,css,js,svg,ttf,eot,woff,woff2}',
+		resources: '*.{js,jsx,scss,css,json,png,jpg,gif}',
 	},
 
 	/*
@@ -25,8 +34,8 @@ export default {
 	 * need to some extra settings: replace paths for PHP, proxy hostname, etc.
 	 */
 	proxy: {
-		origin: '/Users/inafact/Desktop/vccw.yushinada',
-		replaced: '/var',
-		hostname: 'no-2.dev',
+		origin: '/host/machine/directory',
+		replaced: '/container/directory',
+		hostname: 'hostname',
 	},
 };
