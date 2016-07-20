@@ -1,7 +1,7 @@
 {
   "name": "wp2bs-theme-starter",
-  "version": "0.1.0",
-  "description": "(wp2 = wordpress + webpack) + (bs = bootstrap-sass) theme starte",
+  "version": "1.0.0",
+  "description": "(wp2 = wordpress + webpack) + (bs = bootstrap-sass) theme starter",
   "scripts": {
     "main": "gulp"
   },

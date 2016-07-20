@@ -1,7 +1,7 @@
 import gulp from 'gulp';
 import browserSync from 'browser-sync';
 
-import config from './gulp_tasks/config';
+import config from './config';
 import theme from './gulp_tasks/theme';
 import webpack from './gulp_tasks/webpack';
 

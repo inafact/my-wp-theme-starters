@@ -11,10 +11,9 @@ import browserSync from 'browser-sync';
 import del from 'del';
 
 import includeDev from './templates/devmode-php-include';
-import bSSnippet from './templates/browser-sync-snippet';
 import style from './templates/wordpress-style-css';
 
-import Config from './config';
+import Config from '../config';
 
 const config = {
 	themeDir: path.resolve('../', Config.theme.name),
@@ -57,16 +56,11 @@ export default {
       .pipe(filterPHP)
       .pipe(vtransform((filename) => {
         return mapstream((chunk, next) => {
-          const definitions = [];
-          let _filename = filename;
-          _filename = filename.replace(config.originRoot, config.proxyRoot);
-          gutil.log(gutil.colors.blue(
-						filename,
-						' -> ',
-						_filename
-					));
+          let tFilename = filename;
+          tFilename = filename.replace(config.originRoot, config.proxyRoot);
+          gutil.log(gutil.colors.blue(filename, ' -> ', tFilename));
 
-          return next(null, includeDev(_filename, definitions));
+          return next(null, includeDev(tFilename));
         });
       }))
       .pipe(filterPHP.restore)
@@ -75,7 +69,6 @@ export default {
 				'style.css': style.develop,
       }))
       .pipe(filterFunc)
-      .pipe(plugins.insert.append(bSSnippet))
       .pipe(filterFunc.restore)
       .pipe(gulp.dest(config.themeDir))
       .on('end', () => bs.reload());

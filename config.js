@@ -34,8 +34,8 @@ export default {
 	 * need to some extra settings: replace paths for PHP, proxy hostname, etc.
 	 */
 	proxy: {
-		origin: '/host/machine/directory',
-		replaced: '/container/directory',
-		hostname: 'hostname',
+		// origin: '/container/root/directory/at/host/machine',
+		// replaced: '/var',
+		hostname: 'localhost',
 	},
 };

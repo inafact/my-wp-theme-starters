@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import Config from '../config';
+import Config from '../../config';
 
 const tconf = Config.theme;
 

@@ -15,7 +15,7 @@ import del from 'del';
 import browserSync from 'browser-sync';
 import _ from 'lodash';
 
-import Config from './config';
+import Config from '../config';
 const config = {
 	assetsPath: [Config.assets.src, Config.assets.resources].join('/'),
 	destPath: [path.resolve('../', Config.theme.name), Config.assets.dest].join('/'),
